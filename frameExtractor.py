@@ -54,11 +54,10 @@ class FrameExtractor:
         # cap = cv2.VideoCapture('C:/Users/kobew/Desktop/video/sample.mp4')
         cap = cv2.VideoCapture(videoPath)
         while(cap.isOpened()):
-            while cap.get(0) > start & cap.get(0) < end:
-                ret, frame = cap.read()
-                if ret == False | imgIndex == FrameExtractor.imageMax:
-                    break
-
+            ret, frame = cap.read()
+            if ret == False | imgIndex == FrameExtractor.imageMax:
+                break
+            if cap.get(0) > start & cap.get(0) < end:
                 if frameIndex == 1:
                     cv2.imwrite('frame/frame' +
                                 str(imgIndex * 10 - 9)+'.jpg', frame)
